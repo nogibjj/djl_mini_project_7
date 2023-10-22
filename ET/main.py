@@ -10,6 +10,7 @@ import requests
 
 #EXTRACT
 
+
 def extract(
     url="https://raw.githubusercontent.com/jjsantos01/aire_cdmx/master/datos/contaminantes_2019-05-16.cvs",
     file_path="ET/data/my_air_cont.csv",
@@ -23,7 +24,7 @@ def extract(
 extract()
 
 #TRANSFORM and LOAD : load the csv file and insert into a new sqlite3 database
-def load(dataset="data/my_air_contaminants.csv"):
+def load(dataset="ET/data/my_air_cont.csv"):
     """ "Transforms and Loads data into the local SQLite3 database"""
 
     # prints the full working directory and path
@@ -52,7 +53,7 @@ def print_table(cursor, data):
 
 
 def queryCountIMECAS():
-    conn = sqlite3.connect("data/my_airDB.db")
+    conn = sqlite3.connect("ET/data/my_airDB.db")
     cursor = conn.cursor()
     print("Zones in dataset:\n")
     cursor.execute("SELECT zona, COUNT(*) AS total FROM my_airDB GROUP BY zona")

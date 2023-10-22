@@ -1,14 +1,12 @@
 # Package a Python Script into a Command-Line Tool 
 
-Objective: package a Python command-line tool using setuptools, with communication to an external/internal databas
+## Objective:
+Package a Python command-line tool using setuptools, with communication to an external/internal databas
 
-Requirements
-Package a Python script with setuptools or a similar tool
-Include a user guide on how to install and use the tool
-Include communication with an external or internal database (NoSQL, SQL, etc) [If you use Rust you can skip the DB part]
+## How it works 
+This Python tool extracts data from a URL, loads it into a SQLite3 database, and provides some functions to query and display the data. 
 
-
-
-Deliverables:
-- Python package
-- User guide (PDF or markdown)
+## Installation
+To install the package,
+1. fork or clone this repo 
+2. Run on terminal: pip install et_tool_package
