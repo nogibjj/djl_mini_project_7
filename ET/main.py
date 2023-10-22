@@ -30,7 +30,7 @@ def load(dataset="data/my_air_contaminants.csv"):
     print(os.getcwd())
     with open(dataset, newline="", encoding='utf-8') as file:
         payload = csv.reader(file, delimiter=",")
-        conn = sqlite3.connect("data/my_airDB.db")
+        conn = sqlite3.connect("ET/data/my_airDB.db")
         c = conn.cursor()
 
         c.execute("DROP TABLE IF EXISTS my_airDB")
@@ -41,45 +41,7 @@ def load(dataset="data/my_air_contaminants.csv"):
         conn.close()
         return "my_airDB.db"
 
-load()
-
-
-def queryC():  # create
-    """CREATE Query new col in my_airDB table"""
-    conn = sqlite3.connect("data/my_airDB.db")
-    cursor = conn.cursor()
-    cursor.execute(
-        "INSERT INTO my_airDB ('Fecha','Hora','ZP','imecas','zona','contaminante','color') VALUES ('2023-05-02','1','NEO4','26.0','NE','O3','blue')"
-    )
-    print("Insert new row on my_airDB table:")
-    print(cursor.fetchall())
-    conn.close()
-    return "Success"
-
-
-def queryR():
-    """READ Query of the my_airDB table"""
-    conn = sqlite3.connect("data/my_airDB.db")
-    cursor = conn.cursor()
-    cursor.execute("SELECT * FROM my_airDB limit 5")
-    print("Top 5 rows of the my_airDB table:")
-    print(cursor.fetchall())
-    conn.close()
-    return "Success"
-
-
-def queryU():
-    """UPDATE Query of the my_airDB table"""
-    conn = sqlite3.connect("data/my_airDB.db")
-    cursor = conn.cursor()
-    cursor.execute("UPDATE my_airDB SET color='grey2' WHERE 'gray' ")
-    print("update grey to grey2 in my_airDB table:")
-    print(cursor.fetchall())
-    conn.close()
-    return "Success"
-
-
-
+#load()
 
 def print_table(cursor, data):
     table = PrettyTable()
@@ -105,3 +67,20 @@ def queryCountIMECAS():
     print_table(cursor, cursor.fetchall())
     conn.close()
     return "Success"
+
+def main():
+    #Extract
+    print("Extracting data...")
+    extract()
+
+    # Transform and load
+    print("Transforming data...")
+    load()
+
+    # Query
+    print("Querying data...")
+    queryCountIMECAS()
+
+
+if __name__ == "__main__":
+    main()
