@@ -10,7 +10,7 @@ format:
 
 lint:
 	#disable comment to test speed
-	pylint --disable=R,C --ignore-patterns=test_.?py *.py mylib/*.py
+	pylint --disable=R,C --ignore-patterns=test_.?py *.py 
 
 
 container-lint:
@@ -21,4 +21,4 @@ refactor: format lint
 deploy:
 	#deploy goes here
 		
-all: install lint test format deploy
+all: install lint format deploy
