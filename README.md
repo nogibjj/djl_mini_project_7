@@ -11,4 +11,4 @@ This Python tool extracts data from a URL, loads it into a SQLite3 database, and
 ## Installation
 To install the package,
 1. fork or clone this repo 
-2. Run on terminal: pip install et_tool_package
+2. Run on terminal: pip install et_tool
